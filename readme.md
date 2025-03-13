@@ -15,6 +15,17 @@ A (mostly functioning) server for Love Live! School idol festival 2 MIRACLE LIVE
 
 `apt install -y npm libssl-dev perl`
 
+### Android
+
+#### Requirements
+- [Termux](https://termux.dev) ( Termux is an Android terminal emulator and Linux environment app. )
+- [perl](https://www.perl.org/get.html) 
+- [rust](https://www.rust-lang.org/tools/install)
+- [npm](https://www.npmjs.com/)
+
+Launch Termux, and run
+`apt install -y nodejs rust perl make`
+
 ### Windows
 
 #### Requirements
