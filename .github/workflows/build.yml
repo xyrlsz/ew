@@ -46,11 +46,11 @@ jobs:
       - name: Upload x86_64-unknown-linux-gnu
         uses: actions/upload-artifact@v4
         with:
-          name: ew
+          name: ew-x86_64-unknown-linux-gnu
           path: ./out/ew-x86_64-unknown-linux-gnu
 
       - name: Upload x86_64-pc-windows-gnu
         uses: actions/upload-artifact@v4
         with:
-          name: ew
+          name: ew-x86_64-pc-windows-gnu.exe
           path: ./out/ew-x86_64-pc-windows-gnu.exe
