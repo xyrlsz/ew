@@ -22,6 +22,7 @@ A (mostly functioning) server for Love Live! School idol festival 2 MIRACLE LIVE
 - [perl](https://www.perl.org/get.html) 
 - [rust](https://www.rust-lang.org/tools/install)
 - [npm](https://www.npmjs.com/)
+- make
 
 Launch Termux, and run
 `apt install -y nodejs rust perl make`
