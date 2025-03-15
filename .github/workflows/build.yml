@@ -29,12 +29,20 @@ jobs:
           npm install
           npm run build
 
-      - name: Build x86_64-unknown-linux-gnu
+      - name: Build x86_64-unknown-linux-musl
         run: |
           . "$HOME/.cargo/env"
-          cargo build --target x86_64-unknown-linux-gnu --release || echo "Failed to build"
-          mv target/x86_64-unknown-linux-gnu/release/ew out/ew-x86_64-unknown-linux-gnu
+          sudo apt update && sudo apt install musl-tools -y
+          rustup target add x86_64-unknown-linux-musl
+          cargo build --target x86_64-unknown-linux-musl --release || echo "Failed to build"
+          mv target/x86_64-unknown-linux-musl/release/ew out/ew-x86_64-unknown-linux-musl
 
+      - name: Build x86_64-unknown-linux-gnu
+        run: |
+            . "$HOME/.cargo/env"
+            cargo build --target x86_64-unknown-linux-gnu --release || echo "Failed to build"
+            mv target/x86_64-unknown-linux-gnu/release/ew out/ew-x86_64-unknown-linux-gnu
+  
       - name: Build x86_64-pc-windows-gnu
         run: |
           . "$HOME/.cargo/env"
@@ -43,12 +51,18 @@ jobs:
           cargo build --target x86_64-pc-windows-gnu --release || echo "Failed to build"
           mv target/x86_64-pc-windows-gnu/release/ew.exe out/ew-x86_64-pc-windows-gnu.exe
 
+      - name: Upload x86_64-unknown-linux-musl
+        uses: actions/upload-artifact@v4
+        with:
+          name: ew-x86_64-unknown-linux-musl
+          path: ./out/ew-x86_64-unknown-linux-musl
+
       - name: Upload x86_64-unknown-linux-gnu
         uses: actions/upload-artifact@v4
         with:
-          name: ew-x86_64-unknown-linux-gnu
-          path: ./out/ew-x86_64-unknown-linux-gnu
-
+            name: ew-x86_64-unknown-linux-gnu
+            path: ./out/ew-x86_64-unknown-linux-gnu
+            
       - name: Upload x86_64-pc-windows-gnu
         uses: actions/upload-artifact@v4
         with:
